@@ -10,9 +10,9 @@
 
 #include <avr/io.h>
 #include <avr/delay.h>
-//#include <avr/interrupt.h>
+#include <avr/interrupt.h>
 //#include <avr/pgmspace.h>
-//#include <avr/sleep.h>
+#include <avr/sleep.h>
 #include <avr/eeprom.h>
 #include <inttypes.h>
 #include <avr/wdt.h>
@@ -21,10 +21,6 @@
 #include "lcd.c"
 
 #include "adc.c"
-#include "onewire.c"
-#include "ds18x20.c"
-#include "crc8.c"
-//#include "uart328.c"
 
 #include "defines.h"
 
