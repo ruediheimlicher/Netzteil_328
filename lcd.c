@@ -536,28 +536,6 @@ void r_itoa16(int16_t zahl, char* string)
 }
 
 
-
-/*
- 
-Funktion zur Anzeige einer 32 Bit Zahl im Stringformat
-auf einem LCD mit HD44780 Controller
-Quelle: www.mikrocontroller.net/articles/Festkommaarithmetik
-Parameter:
- 
-char* string  : Zeiger auf String, welcher mit my_itoa() erzeugt wurde
-uint8_t start : Offset im String, ab der die Zahl ausgegeben werden soll,
-                das ist notwenig wenn Zahlen mit begrenztem Zahlenbereich
-                ausgegeben werden sollen
-                Vorzeichenlose Zahlen      : 0..10
-                Vorzeichenbehaftete zahlen : 1..11
-uint8_t komma : Offset im String, zeigt auf die Stelle an welcher das virtuelle
-                Komma steht (erste Nachkommastelle)
-                komma muss immer gršsser oder gleich start sein !
- 
-uint8_t frac  : Anzahl der Nachkommastellen
- 
-*/
- 
  void lcd_puthex(uint8_t zahl)
 {
 	//char string[5];
