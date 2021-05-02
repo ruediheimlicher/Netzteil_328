@@ -30,7 +30,6 @@
 #define K_WINDUP_HI  40
 #define K_WINDUP_LO  -10
 
-#define TIMER2_ENDWERT 0x9E // OV 20ms
 
 #define TIMER2_COMPA 0x9F // OV 20ms
 
@@ -75,7 +74,7 @@
 #define STROM_ON     5 // Stromregelung wirkt
 
 #define STROM_MIN   300
-#define TEMP_MAX     610 // Fan starten, beep
+#define TEMP_MAX     600 // Fan starten, beep
 #define TEMP_OFF     550 // Ausschalten
 
 #define TIMER2_BLINK_TAKT 2

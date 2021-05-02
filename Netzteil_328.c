@@ -276,9 +276,11 @@ ISR(TIMER2_OVF_vect)
 
 void main (void) 
 {
-   MCUSR = 0;
-	wdt_disable();
-
+   wdt_reset();
+    MCUSR=0;
+    WDTCSR|=_BV(WDCE) | _BV(WDE);
+   
+    WDTCSR=0;
 	slaveinit();
 		
 	/* initialize the LCD */
@@ -289,31 +291,30 @@ void main (void)
 	lcd_cls();
 	lcd_puts("READY\0");
 	
-
-	uint8_t Tastenwert=0;
-	uint8_t TastaturCount=0;
-	
-	uint16_t TastenStatus=0;
-	uint16_t Tastencount=0;
-	uint16_t Tastenprellen=0x01F;
+   _delay_ms(1000);
 	//timer0();
 	uint16_t loopcount0=0;
    uint16_t loopcount1=0;
 
 	uint8_t loopcount=0;
 
-	_delay_ms(200);
+	_delay_ms(50);
 
-	lcd_clr_line(0);
+	//lcd_clr_line(0);
    initADC(0);
+   _delay_ms(50);
    timer0();
+   _delay_ms(50);
    timer2();
+   _delay_ms(50);
    sei();
-   status |= (1<<PWM_ADC);
+   //status |= (1<<PWM_ADC);
 //   status |= (1<<PID_FIRST_RUN); // K Prop ist beim Aufheizen kleiner
    #pragma mark while  
 	while (1)
    {
+      
+      wdt_reset();
       //Blinkanzeige
       loopcount0++;
       //OSZITOGG;
@@ -342,7 +343,8 @@ void main (void)
             status &= ~(1<<BEEP_ON);
          }
       }
-        if (led_temp < TEMP_MAX)
+      
+      if (led_temp < TEMP_MAX)
       {
          //OCR2A = TIMER2_COMPA_TEMP;
          OCR0A = OCR0A_TEMP;
@@ -369,6 +371,9 @@ void main (void)
             status &= ~(1<<BEEP_ON);
          }
       }
+      
+      
+      
       if (status & (1<<PWM_ADC)) // ADC tempsensor lesen, beep einschalten 
       {
          
