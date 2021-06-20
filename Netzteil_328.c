@@ -321,7 +321,7 @@ void main (void)
       // Stromregelung checken
       
       stromreg = readKanal(ADC_STROM_PIN); 
-      if (stromreg < STROM_MIN)
+      if (stromreg < STROM_MIN) // 300
       {
          //OCR2A = TIMER2_COMPA_STROM;
          OCR0A = OCR0A_STROM;
@@ -393,6 +393,7 @@ void main (void)
 
          lcd_gotoxy(0,1);
          lcd_putc('I');
+         lcd_putc(' ');
          lcd_putint12(stromreg);
          lcd_putc(' ');
          lcd_putint(beepcounter);
