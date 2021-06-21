@@ -74,11 +74,12 @@
 #define STROM_ON     5 // Stromregelung wirkt
 
 #define STROM_MIN   500
-#define TEMP_MAX     500 // Fan starten, beep
+
+#define TEMP_FAN     500 // Fan starten, beep
 #define TEMP_OFF     450 // Ausschalten
 
 #define TIMER2_BLINK_TAKT 2
 
-//avr-size  --mcu=attiny85 -C Laminator.elf
+//avr-size  --mcu=attiny85 -C Netzteil_328.elf
 
 #endif /* defines_h */

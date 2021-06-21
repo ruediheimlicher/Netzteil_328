@@ -342,9 +342,9 @@ void main (void)
             beep_offtime = BEEP_OFFTIME;
             status &= ~(1<<BEEP_ON);
          }
-      }
+      }// end Strom
       
-      if (led_temp < TEMP_MAX)
+      if (led_temp < TEMP_FAN)
       {
          //OCR2A = TIMER2_COMPA_TEMP;
          OCR0A = OCR0A_TEMP;
@@ -360,7 +360,7 @@ void main (void)
             OUTPORT |= (1<<OUT_OFF_PIN); // output OFF
          }
       }
-      else if (led_temp > (TEMP_MAX + 1))
+      else if (led_temp > (TEMP_FAN + 1))
       {
          if ((status & (1<<FAN_ON)))
          {
