@@ -37,7 +37,7 @@
 #define BUZZERPIN		0
 
 #define OCR0A_TEMP 0x80;
-#define OCR0A_STROM 0xE0;
+#define OCR0A_STROM 0xF0;
 
 #define TEMP_DELAY   550
 
@@ -319,9 +319,9 @@ void main (void)
       loopcount0++;
       //OSZITOGG;
       // Stromregelung checken
-      
+      // Board 317_2 Spannung steigt wenn Strom steigt. 
       stromreg = readKanal(ADC_STROM_PIN); 
-      if (stromreg < STROM_MIN) // 300
+      if (stromreg > STROM_MIN) // 300
       {
          //OCR2A = TIMER2_COMPA_STROM;
          OCR0A = OCR0A_STROM;
@@ -333,7 +333,7 @@ void main (void)
             beep_offtime = BEEP_OFFTIME;
          }
       }
-      else if (stromreg > STROM_MIN +1)
+      else if (stromreg < STROM_MIN -1)
       {
          if ((status & (1<<STROM_ON)))
          {

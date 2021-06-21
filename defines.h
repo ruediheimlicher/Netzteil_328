@@ -73,9 +73,9 @@
 
 #define STROM_ON     5 // Stromregelung wirkt
 
-#define STROM_MIN   300
-#define TEMP_MAX     600 // Fan starten, beep
-#define TEMP_OFF     550 // Ausschalten
+#define STROM_MIN   500
+#define TEMP_MAX     500 // Fan starten, beep
+#define TEMP_OFF     450 // Ausschalten
 
 #define TIMER2_BLINK_TAKT 2
 
